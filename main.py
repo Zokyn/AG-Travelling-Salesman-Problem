@@ -10,3 +10,6 @@ from CaixeiroViajante import Caixeiro, Cidade
 # cidadeA(), cidadeB()
 # distancia = cidadeA.distancia(cidadeB)
 # print('A distancia AB é: {:0.3f} km'.format(distancia))
+
+new = Populacao(4, 10)
+new()

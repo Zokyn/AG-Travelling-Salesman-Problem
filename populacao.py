@@ -1,7 +1,7 @@
 from cromossomo import Cromossomo
 from ecosistema import Natureza
 class Populacao:
-    tamanho_da_populacao = 0
+    # tamanho_da_populacao = 0
     
     lista_de_cromossomos = list()
     lista_de_genes = list()
@@ -12,7 +12,8 @@ class Populacao:
 
     def __init__(self, tamanho_populacao, tamanho_locus):
         
-        self.tamanho_da_populacao = tamanho_populacao
+        # self.tamanho_da_populacao = tamanho_populacao
+
         # Preenche a lista de cromossomos
         self.lista_de_cromossomos = list()
         for i in range(tamanho_populacao):

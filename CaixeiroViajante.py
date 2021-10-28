@@ -76,9 +76,42 @@ class Caixeiro:
                     nova_cidade = Cidade(n, x, y)
                     self.cidades.append(nova_cidade)
             
+    def funcao_aptidao(self, cromossomo):
+        # Sendo genes o conjunto de variaveis que forma uma solução
+        solucao = cromossomo.genes
 
-    def __init__(self, quantidade):
-        self.gerarCidades(quantidade)
+        ## DEFININDO TRAJETO
+        # Geramos o trajeto baseado na solução
+        trajeto = list(); i = 0
+        # Para cada variavel, ou alelo
+        for variavel in solucao:
+            if variavel == 1:
+                # Temos uma cidade no trajeto
+                trajeto.append(self.cidades[i])
+            i += 1
+
+        # Agora que sabemos o trajeto pecorrido pela solução
+        aptidao = 0 # podemos achar a aptidao da solução por
+        soma_distancias = 0 # meio da soma das distancias das
+        cidade_anterior = None # cidades presentes no trajeto
+        
+        ## DEFININDO APTIDAO
+        # Para cada cidade do trajeto
+        for cidade in trajeto:
+            if(cidade_anterior):
+                # comparamos a distancia dela com a cidade anterior
+                distancia = cidade.distancia(cidade_anterior) 
+                # E somamos essa distancia com a distancia total
+                soma_distancias += distancia 
+            cidade_anterior = cidade # atualizamos a cidade anterior
+        # aptidao do cromossomo, por enquanto, é dada pela soma da  
+        # distancia das cidades presentes no trajeto dado pelo 
+        # cromossomo
+        aptidao = soma_distancias
+        return aptidao
+
+    def __init__(self, quantidade_de_cidades):
+        self.gerarCidades(quantidade_de_cidades)
 
     def __call__(self):
         lista_de_cidade = self.cidades

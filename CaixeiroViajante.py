@@ -83,9 +83,10 @@ class Caixeiro:
                     self.cidades.append(nova_cidade)
     
     # Atribuindo aptidao ao cromossomo         
-    def funcao_aptidao(self, cromossomo):
+    def funcao_aptidao(self, cromossomo): 
+        # A função aptidão é dada pela distancia euclidiana do trajeto
         # Sendo genes o conjunto de variaveis que forma uma solução
-        solucao = cromossomo.genes
+        solucao = cromossomo.genes 
 
         ## DEFININDO TRAJETO
         # Geramos o trajeto baseado na solução
@@ -100,9 +101,9 @@ class Caixeiro:
         # Agora que sabemos o trajeto pecorrido pela solução
         aptidao = 0 # podemos achar a aptidao da solução por
         soma_distancias = 0 # meio da soma das distancias das
-        # Variavel auxiliar
+        # Variaveis auxiliar
         cidade_anterior = None # cidades presentes no trajeto
-        
+        cidade_inicial = None
         ## DEFININDO APTIDAO
         # Para cada cidade do trajeto
         for cidade in trajeto:
@@ -111,10 +112,14 @@ class Caixeiro:
                 distancia = cidade.distancia(cidade_anterior) 
                 # E somamos essa distancia com a distancia total
                 soma_distancias += distancia 
+            else:
+                cidade_inicial = cidade
             cidade_anterior = cidade # atualizamos a cidade anterior
-        # aptidao do cromossomo, por enquanto, é dada pela soma da  
-        # distancia das cidades presentes no trajeto dado pelo 
-        # cromossomo
+        # acrescentamos ao trajeto o percurso até a cidade inicial
+        distancia = cidade.distancia(cidade_inicial)
+        soma_distancias += distancia 
+        # aptidao do cromossomo, é dada pela soma das distancias e.
+        # das cidades presentes no trajeto dado pelo cromossomo
         aptidao = soma_distancias
         return aptidao
     # funções build-in

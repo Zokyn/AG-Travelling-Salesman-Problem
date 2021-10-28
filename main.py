@@ -14,7 +14,7 @@ from CaixeiroViajante import Caixeiro, Cidade
 # new = Cromossomo(Natureza.gerarGenes(10))
 # new()
 
-n = 4
+n = 6
 new = Cromossomo(Natureza.gerarGenes(n))
 a = Caixeiro(n)
 

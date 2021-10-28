@@ -100,6 +100,7 @@ class Caixeiro:
         # Agora que sabemos o trajeto pecorrido pela solução
         aptidao = 0 # podemos achar a aptidao da solução por
         soma_distancias = 0 # meio da soma das distancias das
+        # Variavel auxiliar
         cidade_anterior = None # cidades presentes no trajeto
         
         ## DEFININDO APTIDAO

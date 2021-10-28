@@ -37,10 +37,15 @@ class Cidade:
         print(f'{self.nome}:{self.coord}')
 
 class Caixeiro: 
+    # Classe problema que recebe os parametros para que 
+    # seja solucionado. Com isso temos, uma lista de cidade
+    # e um trajeto a ser elaborado por meio da solução (cromossomo)
+    # ela que definirá o valor da aptidao de um individuo, ou
+    # seja de um solução possível.
     cidade_inicial = None
     cidades = list()
 
-    trajeto = list()
+    # trajeto = list()
 
     def cidade_inicial(self, cidade):
         self.cidade_inicial = cidade
@@ -117,7 +122,3 @@ class Caixeiro:
         lista_de_cidade = self.cidades
         for cidade in lista_de_cidade:
             cidade()
-    # def funcao_de_aptidao(cromossomo):
-    #     distancia = 0
-    #     # for cidade in cromossomo:
-

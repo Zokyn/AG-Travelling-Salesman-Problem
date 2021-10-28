@@ -1,14 +1,14 @@
 from cromossomo import Cromossomo
 
 class Populacao:
-    taxa_de_populacao = 0
+    tamanho_da_populacao = 0
     populacao_de_cromossomos = list()
 
     def adicionar_cromossomo(self, cromossomo):
         self.populacao_de_cromossomos.append(cromossomo)
 
     def __init__(self, populacao, locus):
-        self.taxa_de_populacao = populacao
+        self.tamanho_da_populacao = populacao
         self.populacao_de_cromossomos = list()
         for i in range(populacao):
             individuo = Cromossomo( None, locus)

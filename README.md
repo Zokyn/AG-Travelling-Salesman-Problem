@@ -5,9 +5,10 @@ O projeto consiste num algoritmo para a resolução no problema clássico do cai
 
 ---
 # ALGORITMOS GENÉTICOS 
+Uso de conjunto de métodos heurísticos, os Algoritmos Genéticos se trata de uma meta-heurística que utiliza de fundamentos evolucionistas e genéticos para atingir, com facilidade e pouco custo operacional, uma solução que pode ser considerada razoável. 
 
 # CAIXEIRO VIAJANTE
+Problema do Caixeiro Viajante consistem em encontrar a melhor solução que compoe um trajeto visitando **n** cidades e retornando a cidade de origem. Sendo a melhor solução aquela que possuir a menor distância possível ao se cumprir o trajeto com todas as características ditas acima.
 
-## Modelagem
-    
-O problema usa de cromossomos para representar soluções. Dessa maneira os alelos neles presentes representam as cidades passadas pelo trajeto do caixeiro viajante, tendo os únicos valores possíveis de 0 e 1, servindo de uma <code>boolean</code>, no qual 1 é um cidade visitada e 0 uma cidade ignorada. 
+## Modelagem    
+O problema usa de cromossomos para representar soluções. Dessa maneira os alelos neles presentes representam as cidades passadas pelo trajeto do caixeiro viajante, tendo os únicos valores possíveis de 0 e 1, servindo de um <code>boolean</code>, no qual 1 é um cidade visitada e 0 uma cidade ignorada. 

@@ -47,15 +47,16 @@ class Caixeiro:
 
     # trajeto = list()
 
+
     def cidade_inicial(self, cidade):
         self.cidade_inicial = cidade
 
+    # Gerando cidades aleatórias
     def gerarCidades(self, quantidade):
-        # Gerando cidades aleatórias
-        lista_cidade = list(); i = 0
         # Se o numero de cidades for menor ou igual
         # ao numero de letras no alfabeto, podemos 
         # usa-las como base para nomear cidades
+        i = 0
         if quantidade <= 26:
             # Gera a quantidade de cidades dada
             for i in range(quantidade):
@@ -80,7 +81,8 @@ class Caixeiro:
 
                     nova_cidade = Cidade(n, x, y)
                     self.cidades.append(nova_cidade)
-            
+    
+    # Atribuindo aptidao ao cromossomo         
     def funcao_aptidao(self, cromossomo):
         # Sendo genes o conjunto de variaveis que forma uma solução
         solucao = cromossomo.genes
@@ -114,7 +116,7 @@ class Caixeiro:
         # cromossomo
         aptidao = soma_distancias
         return aptidao
-
+    # funções build-in
     def __init__(self, quantidade_de_cidades):
         self.gerarCidades(quantidade_de_cidades)
 

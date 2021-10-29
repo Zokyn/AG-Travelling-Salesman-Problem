@@ -12,3 +12,7 @@ Problema do Caixeiro Viajante consistem em encontrar a melhor solução que comp
 
 ## Modelagem    
 O problema usa de cromossomos para representar soluções. Dessa maneira os alelos neles presentes representam as cidades passadas pelo trajeto do caixeiro viajante, tendo os únicos valores possíveis de 0 e 1, servindo de um <code>boolean</code>, no qual 1 é um cidade visitada e 0 uma cidade ignorada. 
+
+* **Função Aptidão**
+
+    A função aptidão é responsável por classificar os melhores individuos, ou seja os mais adaptados, que serão escolhidos para a seleção do cruzamento. Para isso elaboramo que a função aptidão é a razão do número de cidades visitas pela distancia total do trajeto.

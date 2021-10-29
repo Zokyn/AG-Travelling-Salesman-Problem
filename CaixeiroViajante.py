@@ -90,37 +90,49 @@ class Caixeiro:
 
         ## DEFININDO TRAJETO
         # Geramos o trajeto baseado na solução
-        trajeto = list(); i = 0
+        trajeto = list() 
+        # Contadora de loop e contadora de cidades
+        percorridas = 0; i = 0
         # Para cada variavel, ou alelo
         for variavel in solucao:
             if variavel == 1:
                 # Temos uma cidade no trajeto
                 trajeto.append(self.cidades[i])
+                # Acrescentamos o numero de cidades
+                percorridas += 1
             i += 1
-
-        # Agora que sabemos o trajeto pecorrido pela solução
-        aptidao = 0 # podemos achar a aptidao da solução por
-        soma_distancias = 0 # meio da soma das distancias das
-        # Variaveis auxiliar
-        cidade_anterior = None # cidades presentes no trajeto
-        cidade_inicial = None
-        ## DEFININDO APTIDAO
-        # Para cada cidade do trajeto
-        for cidade in trajeto:
-            if(cidade_anterior):
-                # comparamos a distancia dela com a cidade anterior
-                distancia = cidade.distancia(cidade_anterior) 
-                # E somamos essa distancia com a distancia total
-                soma_distancias += distancia 
-            else:
-                cidade_inicial = cidade
-            cidade_anterior = cidade # atualizamos a cidade anterior
-        # acrescentamos ao trajeto o percurso até a cidade inicial
-        distancia = cidade.distancia(cidade_inicial)
-        soma_distancias += distancia 
-        # aptidao do cromossomo, é dada pela soma das distancias e.
-        # das cidades presentes no trajeto dado pelo cromossomo
-        aptidao = soma_distancias
+        # Se houver apenas uma ou nenhum cidade no trajeto então
+        # devemos descartar a solução, para isso atribuimos sua 
+        # aptidao a zero, para que os operadores evitem que esse
+        # cromossomo perpetue suas caracteristicas na população
+        if(len(trajeto) <= 1):
+            aptidao = 0
+        else: 
+            # Agora que sabemos o trajeto pecorrido pela solução
+            aptidao = 0 # podemos achar a aptidao da solução por
+            soma_distancias = 0 # meio da soma das distancias das
+            # Variaveis auxiliar
+            cidade_anterior = None # cidades presentes no trajeto
+            cidade_inicial = None
+            ## DEFININDO APTIDAO
+            # Para cada cidade do trajeto
+            for cidade in trajeto:
+                if(cidade_anterior):
+                    # comparamos a distancia dela com a cidade anterior
+                    distancia = cidade.distancia(cidade_anterior) 
+                    # E somamos essa distancia com a distancia total
+                    soma_distancias += distancia 
+                else:
+                    cidade_inicial = cidade
+                cidade_anterior = cidade # atualizamos a cidade anterior
+            # acrescentamos ao trajeto o percurso até a cidade inicial
+            distancia = cidade.distancia(cidade_inicial)
+            soma_distancias += distancia 
+            # aptidao do cromossomo, é dada pela razão do numero de
+            # cidades presentes no trajeto pela soma das distancias 
+            # presentes no trajeto dado pela solução (cromossomo)
+            aptidao = percorridas/soma_distancias
+        
         return aptidao
     # funções build-in
     def __init__(self, quantidade_de_cidades):

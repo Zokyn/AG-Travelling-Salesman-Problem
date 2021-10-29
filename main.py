@@ -18,8 +18,10 @@ n = 6
 new = Cromossomo(Natureza.gerarGenes(n))
 a = Caixeiro(n)
 
+print('CIDADES:')
 a()
+print('Cromossomo 1')
 new()
 
 aptidao = a.funcao_aptidao(new)
-print(aptidao)
+print(f'Aptidao do Cromossomo: {aptidao}')

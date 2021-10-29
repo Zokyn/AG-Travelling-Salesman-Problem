@@ -1,8 +1,10 @@
 from cromossomo import Cromossomo
 from ecosistema import Natureza
-from populacao import Populacao
-from CaixeiroViajante import Caixeiro, Cidade
+from caixeiro import Caixeiro
+# from populacao import Populacao
+# from cidade import Cidade
 
+### TESTES
 # new = Caixeiro(4)
 # cidadeA = new.cidades[0]
 # cidadeB = new.cidades[1]
@@ -16,7 +18,8 @@ from CaixeiroViajante import Caixeiro, Cidade
 
 n = 6
 new = Cromossomo(Natureza.gerarGenes(n))
-a = Caixeiro(n)
+a = Caixeiro()
+a.recebeCidades()
 
 print('CIDADES:')
 a()

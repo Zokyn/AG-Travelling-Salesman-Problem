@@ -1,40 +1,10 @@
 import random
 import string
-# cidades = {3.0, 5.5, 6.7, 3.2, 4.2, 1.2, 3.3, 4.2, 5.0}
+from cidade import Cidade
+CIDADES = [ [3.68, 6.54], [9.68, -2.49], [-7.93, 1.73],
+            [0.94, 3.04], [2.65, -5.35], [1.1, 9.83] ]
 NOMES = list(string.ascii_uppercase)
 AREA = [-10.0, 10.0]
-class Cidade:
-    # Atributos de uma cidade
-    nome = '' 
-    coord = [0.0, 0.0] 
-    x = 0; y = 0 
-
-    # Função para calular a distancia até outra cidade
-    def distancia(self, cidade):
-        # distX = pow(abs(cidade.x - self.x), 2)
-        # distY = pow(abs(cidade.y - self.y), 2)  
-
-        # Quadrado da distancia de self até cidade  
-        distanciaX = pow(cidade.x - self.x, 2)
-        # Quadrado da distancia de self até cidade B
-        distanciaY = pow(cidade.y - self.y, 2)
-        # Distancia Euclidiana é dada pela raiz da soma 
-        # do quadrado dos eixos da distancia da cidade 
-        distanciaE = pow(distanciaX + distanciaY, 0.5)
-
-        return distanciaE
-    def atribuirCoordenadas(self, x, y):
-        self.x = x
-        self.y = y
-        self.coord = [x,y]
-    def __init__(self, nomeCidade, x, y):
-        x = round(x, 2)
-        y = round(y, 2)
-
-        self.nome = nomeCidade
-        self.atribuirCoordenadas(x,y)
-    def __call__(self):
-        print(f'{self.nome}:{self.coord}')
 
 class Caixeiro: 
     # Classe problema que recebe os parametros para que 
@@ -42,15 +12,14 @@ class Caixeiro:
     # e um trajeto a ser elaborado por meio da solução (cromossomo)
     # ela que definirá o valor da aptidao de um individuo, ou
     # seja de um solução possível.
-    cidade_inicial = None
     cidades = list()
+    def recebeCidades(self):
+        cidades = list(); i = 0
+        for i in range(len(CIDADES)):
+            coord = CIDADES[i]
+            new = Cidade(i, coord[0], coord[1])
 
-    # trajeto = list()
-
-
-    def cidade_inicial(self, cidade):
-        self.cidade_inicial = cidade
-
+            self.cidades.append(new)
     # Gerando cidades aleatórias
     def gerarCidades(self, quantidade):
         # Se o numero de cidades for menor ou igual
@@ -76,11 +45,11 @@ class Caixeiro:
             for i in range(quantidade):
                     n = i+1
                     
-                    x = random.uniform(-10.0, 10.0)
-                    y = random.uniform(-10.0, 10.0)
+    #                 x = random.uniform(-10.0, 10.0)
+    #                 y = random.uniform(-10.0, 10.0)
 
-                    nova_cidade = Cidade(n, x, y)
-                    self.cidades.append(nova_cidade)
+    #                 nova_cidade = Cidade(n, x, y)
+    #                 self.cidades.append(nova_cidade)
     
     # Atribuindo aptidao ao cromossomo         
     def funcao_aptidao(self, cromossomo): 
@@ -128,6 +97,8 @@ class Caixeiro:
             # acrescentamos ao trajeto o percurso até a cidade inicial
             distancia = cidade.distancia(cidade_inicial)
             soma_distancias += distancia 
+            print('N- de Cidades: ', percorridas)
+            print('Distancia: ', soma_distancias)
             # aptidao do cromossomo, é dada pela razão do numero de
             # cidades presentes no trajeto pela soma das distancias 
             # presentes no trajeto dado pela solução (cromossomo)
@@ -135,8 +106,8 @@ class Caixeiro:
         
         return aptidao
     # funções build-in
-    def __init__(self, quantidade_de_cidades):
-        self.gerarCidades(quantidade_de_cidades)
+    # def __init__(self, quantidade_de_cidades):
+    #     self.gerarCidades(quantidade_de_cidades)
 
     def __call__(self):
         lista_de_cidade = self.cidades
